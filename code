@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brochure Interactive - 2xine Media</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00A7E1;
+            --primary-dark: #0088B8;
+            --red-accent: #E63946;
+            --orange-accent: #F77F00;
+            --green-accent: #2A9D8F;
+            --purple-accent: #7209B7;
+            --yellow-accent: #FCBF49;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary), #002B5B);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 167, 225, 0.2);
+        }
+        
+        .multicolor-bar {
+            height: 5px;
+            background: linear-gradient(to right, 
+                var(--red-accent), 
+                var(--orange-accent),
+                var(--yellow-accent),
+                var(--green-accent),
+                var(--primary),
+                var(--purple-accent));
+        }
+        
+        .testimonial-carousel {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .testimonial-slide {
+            display: none;
+        }
+        
+        .testimonial-slide.active {
+            display: block;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .feature-icon {
+            background-color: rgba(0, 167, 225, 0.1);
+            color: var(--primary);
+            height: 60px;
+            width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        input:focus, textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        /* For the ROI Calculator */
+        .calculator {
+            background-color: rgba(0, 167, 225, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        input[type="range"] {
+            -webkit-appearance: none;
+            height: 10px;
+            border-radius: 5px;
+            background: #ddd;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Navigation Styles */
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        /* For mobile menu */
+        .menu-btn {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            .nav-menu.show {
+                display: flex;
+            }
+            
+            .nav-item {
+                margin: 10px 0;
+            }
+        }
+        
+        .qr-code {
+            width: 100px;
+            height: 100px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        
+        .color-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-16 h-16 rounded-full overflow-hidden bg-white flex items-center justify-center">
+                        <div class="text-center leading-none">
+                            <span class="text-xl font-bold text-blue-400">2xine</span><br>
+                            <div class="flex justify-center my-1">
+                                <div class="color-dot" style="background-color: #E63946;"></div>
+                                <div class="color-dot" style="background-color: #F77F00;"></div>
+                                <div class="color-dot" style="background-color: #2A9D8F;"></div>
+                            </div>
+                            <span class="text-xl font-bold text-blue-500">Media</span>
+                        </div>
+                    </div>
+                    <h1 class="ml-3 text-2xl font-bold text-gray-800">2xine Media</h1>
+                </div>
+                
+                <button class="menu-btn md:hidden">
+                    <i class="fas fa-bars text-gray-800 text-2xl"></i>
+                </button>
+                
+                <ul class="nav-menu hidden md:flex space-x-8">
+                    <li class="nav-item"><a href="#about" class="nav-link font-medium text-gray-700">À propos</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link font-medium text-gray-700">Services</a></li>
+                    <li class="nav-item"><a href="#case-studies" class="nav-link font-medium text-gray-700">Études de cas</a></li>
+                    <li class="nav-item"><a href="#calculator" class="nav-link font-medium text-gray-700">Calculateur ROI</a></li>
+                    <li class="nav-item"><a href="#gallery" class="nav-link font-medium text-gray-700">Réalisations</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link font-medium text-gray-700">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="multicolor-bar"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">L'Innovation Digitale <br>au Service de Votre Croissance</h1>
+                    <p class="text-xl mb-8">Solutions IA et marketing digital adaptées aux défis africains</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#services" class="btn-primary px-8 py-3 rounded-full font-medium">Nos Services</a>
+                        <a href="#contact" class="bg-transparent border-2 border-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-blue-600 transition-all">Nous Contacter</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="bg-white rounded-lg p-6 shadow-lg max-w-md">
+                        <div class="aspect-w-16 aspect-h-9">
+                            <div class="rounded-md overflow-hidden">
+                                <div class="bg-gray-200 h-64 flex items-center justify-center">
+                                    <div class="text-center">
+                                        <i class="fas fa-play-circle text-6xl text-gray-400"></i>
+                                        <p class="mt-4 text-gray-600">Vidéo de présentation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold mb-6">À propos de 2xine Media</h2>
+                <div class="h-1 w-20 bg-blue-400 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-700">2xine Media est une agence de communication et marketing innovante basée au Sénégal. Nous combinons expertise technique, créativité et connaissance approfondie du contexte local pour offrir des solutions digitales adaptées aux défis africains.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg p-8 shadow-md">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Innovation</h3>
+                    <p class="text-gray-700">Nous intégrons les dernières technologies d'intelligence artificielle et d'automatisation pour développer des solutions sur mesure et performantes.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-8 shadow-md">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Performance</h3>
+                    <p class="text-gray-700">Nos stratégies sont orientées résultats, avec des KPIs clairs et une approche analytique pour maximiser votre retour sur investissement.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-8 shadow-md">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Confiance</h3>
+                    <p class="text-gray-700">Nous construisons des relations durables avec nos clients, basées sur la transparence, l'écoute et l'accompagnement personnalisé.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold mb-6">Nos Services</h2>
+                <div class="h-1 w-20 bg-blue-400 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-700">Découvrez nos packages adaptés à vos besoins et objectifs, de la présence digitale essentielle à la transformation complète de votre entreprise.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Digital Starter -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200">
+                    <div class="bg-gray-50 p-6">
+                        <h3 class="text-2xl font-bold mb-2 text-gray-800">Digital Starter</h3>
+                        <div class="flex items-baseline">
+                            <span class="text-3xl font-bold text-blue-500">500.000 - 750.000</span>
+                            <span class="text-gray-600 ml-1">FCFA/mois</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-2">Idéal pour les PME et startups en lancement</p>
+                    </div>
+                    
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Gestion de 3 réseaux sociaux</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>8 visuels par mois</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Site web vitrine avec SEO local</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Rapport mensuel simplifié</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Diagnostic digital gratuit</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>1 session de formation (2h)</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="mt-8">
+                            <a href="#contact" class="btn-primary block text-center py-3 px-6 rounded-lg">Demander un devis</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Digital Growth -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-xl border-2 border-blue-400 transform scale-105 z-10">
+                    <div class="bg-blue-500 p-6 text-white">
+                        <div class="inline-block bg-yellow-400 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold mb-3">RECOMMANDÉ</div>
+                        <h3 class="text-2xl font-bold mb-2">Digital Growth</h3>
+                        <div class="flex items-baseline">
+                            <span class="text-3xl font-bold">1.000.000 - 1.500.000</span>
+                            <span class="ml-1">FCFA/mois</span>
+                        </div>
+                        <p class="text-sm opacity-90 mt-2">Pour les entreprises en pleine croissance</p>
+                    </div>
+                    
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Stratégie digitale personnalisée</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Gestion de 5 réseaux sociaux</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>15 visuels + 2 vidéos courtes/mois</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Campagnes publicitaires optimisées</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Agent IA personnalisé simple</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Emailing mensuel</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Rapports détaillés bi-mensuels</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>3 séances de formation pour votre équipe</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="mt-8">
+                            <a href="#contact" class="btn-primary block text-center py-3 px-6 rounded-lg">Demander un devis</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Transformation Digitale -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200">
+                    <div class="bg-gray-800 p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-2">Transformation Digitale</h3>
+                        <div class="flex items-baseline">
+                            <span class="text-3xl font-bold text-blue-300">2.500.000 - 3.500.000</span>
+                            <span class="ml-1">FCFA/mois</span>
+                        </div>
+                        <p class="text-sm opacity-90 mt-2">Pour les grandes entreprises et organisations</p>
+                    </div>
+                    
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Stratégie digitale omnicanale</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Production audiovisuelle mensuelle</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Gestion complète des réseaux sociaux</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Agent IA personnalisé avancé</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Automatisation des processus marketing</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Analyse prédictive et insights IA</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Dashboard interactif en temps réel</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>Consultant dédié et réunion hebdomadaire</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="mt-8">
+                            <a href="#contact" class="btn-primary block text-center py-3 px-6 rounded-lg">Demander un devis</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <h3 class="text-2xl font-semibold mb-6">Services à la carte</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="text-blue-500 text-xl mb-2"><i class="fas fa-video"></i></div>
+                        <h4 class="text-xl font-semibold mb-2">Production Audiovisuelle</h4>
+                        <p class="text-gray-600 mb-3">Vidéo corporate, podcast avec avatar animé, reportage événementiel</p>
+                        <p class="font-medium text-blue-500">À partir de 400.000 FCFA</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="text-blue-500 text-xl mb-2"><i class="fas fa-robot"></i></div>
+                        <h4 class="text-xl font-semibold mb-2">Solutions IA & Automatisation</h4>
+                        <p class="text-gray-600 mb-3">Assistants IA personnalisés, automatisation de processus, analyse prédictive</p>
+                        <p class="font-medium text-blue-500">À partir de 800.000 FCFA</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="text-blue-500 text-xl mb-2"><i class="fas fa-bullhorn"></i></div>
+                        <h4 class="text-xl font-semibold mb-2">Marketing Digital Ponctuel</h4>
+                        <p class="text-gray-600 mb-3">Campagnes événementielles, refonte site web, formations spécialisées</p>
+                        <p class="font-medium text-blue-500">À partir de 250.000 FCFA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section id="case-studies" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold mb-6">Études de cas</h2>
+                <div class="h-1 w-20 bg-blue-400 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-700">Découvrez comment nous avons aidé nos clients à atteindre leurs objectifs grâce à des solutions digitales innovantes.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Case Study 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gray-300 flex items-center justify-center">
+                        <div class="text-center text-gray-600">
+                            <i class="fas fa-store text-4xl mb-2"></i>
+                            <p>Image étude de cas 1</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-4">
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">E-Commerce</span>
+                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium ml-2">Automatisation</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Adja Shop - Transformation Digitale</h3>
+                        <p class="text-gray-700 mb-6">Comment nous avons aidé une boutique de mode traditionnelle à développer sa présence en ligne et à augmenter ses ventes de 253% en 6 mois.</p>
+                        
+                        <div class="flex flex-wrap gap-4 mb-8">
+                            <div class="bg-gray-100 rounded-lg p-4 flex-1">
+                                <h4 class="text-lg font-semibold text-gray-800">Défi</h4>
+                                <p class="text-gray-700">Convertir une clientèle fidèle mais traditionnelle vers le digital</p>
+                            </div>
+                            <div class="bg-gray-100 rounded-lg p-4 flex-1">
+                                <h4 class="text-lg font-semibold text-gray-800">Solution</h4>
+                                <p class="text-gray-700">Stratégie omnicanale + formation de l'équipe</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 rounded-lg p-6 mb-8">
+                            <h4 class="text-lg font-semibold text-green-800 mb-2">Résultats</h4>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <p class="text-3xl font-bold text-green-600">+253%</p>
+                                    <p class="text-green-800">Augmentation des ventes</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-3xl font-bold text-green-600">15.000+</p>
+                                    <p class="text-green-800">Nouveaux clients</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="flex items-center text-blue-500 font-medium">
+                            Lire l'étude complète
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Case Study 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gray-300 flex items-center justify-center">
+                        <div class="text-center text-gray-600">
+                            <i class="fas fa-hospital text-4xl mb-2"></i>
+                            <p>Image étude de cas 2</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-4">
+                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium">Santé</span>
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium ml-2">IA</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Clinique Baobab Santé</h3>
+                        <p class="text-gray-700 mb-6">Création d'un assistant IA pour gérer les rendez-vous et réduire de 75% le temps d'attente des patients.</p>
+                        
+                        <div class="flex flex-wrap gap-4 mb-8">
+                            <div class="bg-gray-100 rounded-lg p-4 flex-1">
+                                <h4 class="text-lg font-semibold text-gray-800">Défi</h4>
+                                <p class="text-gray-700">Optimiser la gestion des rendez-vous et réduire l'attente</p>
+                            </div>
+                            <div class="bg-gray-100 rounded-lg p-4 flex-1">
+                                <h4 class="text-lg font-semibold text-gray-800">Solution</h4>
+                                <p class="text-gray-700">Agent IA multilingue + automatisation des rappels</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 rounded-lg p-6 mb-8">
+                            <h4 class="text-lg font-semibold text-green-800 mb-2">Résultats</h4>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <p class="text-3xl font-bold text-green-600">-75%</p>
+                                    <p class="text-green-800">Temps d'attente</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-3xl font-bold text-green-600">+42%</p>
+                                    <p class="text-green-800">Satisfaction client</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="flex items-center text-blue-500 font-medium">
+                            Lire l'étude complète
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section id="calculator" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold mb-6">Calculez votre ROI</h2>
+                <div class="h-1 w-20 bg-blue-400 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-700">Utilisez notre calculateur interactif pour estimer le retour sur investissement potentiel de nos services pour votre entreprise.</p>
+            </div>
+            
+            <div class="calculator max-w-4xl mx-auto p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-6">Paramètres</h3>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2">Chiffre d'affaires mensuel actuel</label>
+                            <input type="text" id="current-revenue" class="w-full px-4 py-2 border rounded-lg" placeholder="ex: 5,000,000 FCFA" value="5000000">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2">Budget marketing mensuel</label>
+                            <div class="relative">
+                                <input type="range" id="marketing-budget" min="100000" max="5000000" step="100000" class="w-full">
+                                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                    <span>100K</span>
+                                    <span>5M</span>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2 text-lg font-medium text-blue-500" id="budget-display">500,000 FCFA</div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2">Package sélectionné</label>
+                            <select id="package-select" class="w-full px-4 py-2 border rounded-lg">
+                                <option value="starter">Digital Starter</option>
+                                <option value="growth" selected>Digital Growth</option>
+                                <option value="transform">Transformation Digitale</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2">Durée (mois)</label>
+                            <div class="relative">
+                                <input type="range" id="duration" min="3" max="24" step="3" value="12" class="w-full">
+                                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                    <span>3</span>
+                                    <span>24</span>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2 text-lg font-medium text-blue-500" id="duration-display">12 mois</div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-6">Résultats estimés</h3>
+                        
+                        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                            <h4 class="text-lg font-medium mb-4 text-gray-800">Retour sur investissement</h4>
+                            <div class="text-4xl font-bold text-blue-500 mb-2" id="roi-result">320%</div>
+                            <p class="text-gray-600">ROI estimé sur la période sélectionnée</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white rounded-lg shadow p-4">
+                                <h5 class="font-medium text-gray-800 mb-1">Investissement total</h5>
+                                <div class="text-2xl font-semibold" id="investment-result">6,000,000 FCFA</div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg shadow p-4">
+                                <h5 class="font-medium text-gray-800 mb-1">Revenus générés</h5>
+                                <div class="text-2xl font-semibold text-green-600" id="revenue-result">25,200,000 FCFA</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <p class="text-sm text-gray-500 mb-4">Ces résultats sont basés sur des moyennes du secteur et les performances réelles de nos clients. Les résultats effectifs peuvent varier en fonction de nombreux facteurs.</p>
+                            <a href="#contact" class="btn-primary inline-block py-3 px-8 rounded-lg">Discuter de votre projet</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery and Testimonials -->
+    <section id="gallery" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold mb-6">Nos Réalisations</h2>
+                <div class="h-1 w-20 bg-blue-400 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-700">Découvrez nos travaux récents et ce que nos clients disent de notre collaboration.</p>
+            </div>
+            
+            <!-- Gallery -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-56 bg-gray-300 flex items-center justify-center">
+                        <div class="text-center text-gray-600">
+                            <i class="fas fa-image text-4xl mb-2"></i>
+                            <p>Réalisation 1</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-semibold">Site E-commerce Adja Shop</h4>
+                        <p class="text-sm text-gray-600">Design UX/UI, Développement, SEO</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-56 bg-gray-300 flex items-center justify-center">
+                        <div class="text-center text-gray-600">
+                            <i class="fas fa-image text-4xl mb-2"></i>
+                            <p>Réalisation 2</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-semibold">Campagne Digital Banque Atlantique</h4>
+                        <p class="text-sm text-gray-600">Stratégie, Contenu, Publicité</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-56 bg-gray-300 flex items-center justify-center">
+                        <div class="text-center text-gray-600">
+                            <i class="fas fa-image text-4xl mb-2"></i>
+                            <p>Réalisation 3</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-semibold">Assistant IA Clinique Baobab</h4>
+                        <p class="text-sm text-gray-600">IA, Automatisation, UX</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonials -->
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-2xl font-semibold text-center mb-10">Témoignages Clients</h3>
+                
+                <div class="testimonial-carousel relative">
+                    <div class="testimonial-slide active">
+                        <div class="bg-white rounded-xl p-8 shadow-lg">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 rounded-full bg-gray-300 flex items-center justify-center">
+                                    <i class="fas fa-user text-gray-500"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-lg">Fatou Diop</h4>
+                                    <p class="text-gray-600">Directrice, Adja Shop</p>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                            <p class="italic text-gray-700">"L'équipe de 2xine Media a transformé notre entreprise. Notre présence en ligne génère désormais plus de 60% de notre chiffre d'affaires, et leurs stratégies nous ont permis d'atteindre de nouveaux marchés que nous n'aurions jamais pu toucher autrement."</p>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide">
+                        <div class="bg-white rounded-xl p-8 shadow-lg">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 rounded-full bg-gray-300 flex items-center justify-center">
+                                    <i class="fas fa-user text-gray-500"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-lg">Dr. Amadou Sarr</h4>
+                                    <p class="text-gray-600">Directeur, Clinique Baobab</p>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                            <p class="italic text-gray-700">"L'assistant IA développé par 2xine Media a révolutionné notre gestion des rendez-vous. Non seulement il parle français et wolof, mais il s'adapte parfaitement à nos processus internes. La satisfaction de nos patients a considérablement augmenté."</p>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide">
+                        <div class="bg-white rounded-xl p-8 shadow-lg">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 rounded-full bg-gray-300 flex items-center justify-center">
+                                    <i class="fas fa-user text-gray-500"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-lg">Ibrahima Sow</h4>
+                                    <p class="text-gray-600">CEO, Dakar Delivery</p>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star-half-alt text-yellow-400"></i>
+                            </div>
+                            <p class="italic text-gray-700">"En seulement 3 mois de collaboration avec 2xine Media, nous avons doublé notre base d'utilisateurs. Leur compréhension du marché local combinée à leur expertise technique font toute la différence."</p>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute top-1/2 left-0 -ml-4 -translate-y-1/2">
+                        <button id="prev-testimonial" class="bg-white rounded-full w-10 h-10 shadow-md flex items-center justify-center text-gray-800 hover:bg-gray-100">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="absolute top-1/2 right-0 -mr-4 -translate-y-1/2">
+                        <button id="next-testimonial" class="bg-white rounded-full w-10 h-10 shadow-md flex items-center justify-center text-gray-800 hover:bg-gray-100">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="flex justify-center mt-6">
+                        <div class="testimonial-dot active"></div>
+                        <div class="testimonial-dot"></div>
+                        <div class="testimonial-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold mb-6">Contactez-nous</h2>
+                <div class="h-1 w-20 bg-blue-400 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-700">Prêt à transformer votre présence digitale ? Remplissez le formulaire ci-dessous et nous vous contacterons dans les 24 heures.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <div>
+                    <form>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2" for="name">Nom complet</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border rounded-lg focus:border-blue-400" placeholder="Votre nom">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2" for="email">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border rounded-lg focus:border-blue-400" placeholder="votre@email.com">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2" for="phone">Téléphone</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 border rounded-lg focus:border-blue-400" placeholder="Votre numéro de téléphone">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2" for="service">Service d'intérêt</label>
+                            <select id="service" class="w-full px-4 py-3 border rounded-lg focus:border-blue-400">
+                                <option value="" selected disabled>Choisissez un service</option>
+                                <option value="digital-starter">Digital Starter</option>
+                                <option value="digital-growth">Digital Growth</option>
+                                <option value="transformation">Transformation Digitale</option>
+                                <option value="production">Production Audiovisuelle</option>
+                                <option value="ia">Solutions IA & Automatisation</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2" for="message">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border rounded-lg focus:border-blue-400" placeholder="Détaillez votre projet ou vos besoins..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary py-3 px-8 rounded-lg w-full">Envoyer</button>
+                    </form>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-6">Informations de contact</h3>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-start mb-6">
+                            <div class="text-blue-500 mr-4 mt-1">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Adresse</h4>
+                                <p class="text-gray-700">Dakar, Point E<br>Rue 10, Villa 233<br>Sénégal</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-6">
+                            <div class="text-blue-500 mr-4 mt-1">
+                                <i class="fas fa-phone-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Téléphone</h4>
+                                <p class="text-gray-700">+221 77 000 00 00</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-blue-500 mr-4 mt-1">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <p class="text-gray-700">contact@2xinemedia.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold mb-6">Suivez-nous</h3>
+                    
+                    <div class="flex space-x-4 mb-8">
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white hover:bg-blue-600">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-400 flex items-center justify-center text-white hover:bg-blue-500">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center text-white hover:bg-pink-700">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center text-white hover:bg-blue-800">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="border-t border-gray-300 pt-6">
+                        <h4 class="font-semibold mb-3">Scannez pour télécharger notre présentation</h4>
+                        <div class="qr-code flex flex-col items-center">
+                            <div class="w-32 h-32 bg-gray-300 flex items-center justify-center">
+                                <i class="fas fa-qrcode text-4xl text-gray-500"></i>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">Présentation 2xine Media</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-white flex items-center justify-center">
+                            <div class="text-center leading-none">
+                                <span class="text-sm font-bold text-blue-400">2xine</span><br>
+                                <div class="flex justify-center my-0.5">
+                                    <div class="color-dot" style="background-color: #E63946; width: 5px; height: 5px;"></div>
+                                    <div class="color-dot" style="background-color: #F77F00; width: 5px; height: 5px;"></div>
+                                    <div class="color-dot" style="background-color: #2A9D8F; width: 5px; height: 5px;"></div>
+                                </div>
+                                <span class="text-sm font-bold text-blue-500">Media</span>
+                            </div>
+                        </div>
+                        <h2 class="ml-3 text-xl font-bold">2xine Media</h2>
+                    </div>
+                    <p class="text-gray-400 mb-6">Solutions digitales innovantes adaptées aux réalités africaines.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-400 hover:text-white">Digital Starter</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white">Digital Growth</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white">Transformation Digitale</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white">Production Audiovisuelle</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white">Solutions IA</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Ressources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#case-studies" class="text-gray-400 hover:text-white">Études de cas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Livre blanc</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="flex">
+                            <i class="fas fa-map-marker-alt mr-3 mt-1 text-blue-400"></i>
+                            <span class="text-gray-400">Dakar, Point E<br>Rue 10, Villa 233</span>
+                        </li>
+                        <li class="flex">
+                            <i class="fas fa-phone-alt mr-3 mt-1 text-blue-400"></i>
+                            <span class="text-gray-400">+221 77 000 00 00</span>
+                        </li>
+                        <li class="flex">
+                            <i class="fas fa-envelope mr-3 mt-1 text-blue-400"></i>
+                            <span class="text-gray-400">contact@2xinemedia.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">&copy; 2025 2xine Media. Tous droits réservés.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Mentions légales</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Politique de confidentialité</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">CGV</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.querySelector('.menu-btn');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if(menuBtn && navMenu) {
+                menuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('show');
+                });
+            }
+            
+            // Testimonial Carousel
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const nextBtn = document.getElementById('next-testimonial');
+            const prevBtn = document.getElementById('prev-testimonial');
+            
+            if(slides.length > 0 && nextBtn && prevBtn) {
+                // Function to show a specific slide
+                function showSlide(index) {
+                    slides.forEach(slide => slide.classList.remove('active'));
+                    currentSlide = (index + slides.length) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }
+                
+                // Event listeners for next and previous buttons
+                nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+                prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+                
+                // Auto rotate slides every 5 seconds
+                setInterval(() => showSlide(currentSlide + 1), 5000);
+            }
+            
+            // ROI Calculator
+            const budgetInput = document.getElementById('marketing-budget');
+            const budgetDisplay = document.getElementById('budget-display');
+            const durationInput = document.getElementById('duration');
+            const durationDisplay = document.getElementById('duration-display');
+            const packageSelect = document.getElementById('package-select');
+            const currentRevenue = document.getElementById('current-revenue');
+            const roiResult = document.getElementById('roi-result');
+            const investmentResult = document.getElementById('investment-result');
+            const revenueResult = document.getElementById('revenue-result');
+            
+            function updateCalculator() {
+                // Get values
+                const budget = parseInt(budgetInput.value);
+                const duration = parseInt(durationInput.value);
+                const packageType = packageSelect.value;
+                const revenue = parseInt(currentRevenue.value) || 5000000;
+                
+                // Format budget display
+                budgetDisplay.textContent = budget.toLocaleString() + ' FCFA';
+                
+                // Format duration display
+                durationDisplay.textContent = duration + ' mois';
+                
+                // Calculate ROI based on package
+                let roiMultiplier;
+                switch(packageType) {
+                    case 'starter':
+                        roiMultiplier = 2.5;
+                        break;
+                    case 'growth':
+                        roiMultiplier = 3.2;
+                        break;
+                    case 'transform':
+                        roiMultiplier = 4.0;
+                        break;
+                    default:
+                        roiMultiplier = 3.0;
+                }
+                
+                // Calculate investment and returns
+                const totalInvestment = budget * duration;
+                const additionalRevenue = totalInvestment * roiMultiplier;
+                const roi = (additionalRevenue / totalInvestment) * 100;
+                
+                // Update results
+                roiResult.textContent = Math.round(roi) + '%';
+                investmentResult.textContent = totalInvestment.toLocaleString() + ' FCFA';
+                revenueResult.textContent = additionalRevenue.toLocaleString() + ' FCFA';
+            }
+            
+            // Initialize calculator
+            if(budgetInput && durationInput && packageSelect && currentRevenue) {
+                budgetInput.addEventListener('input', updateCalculator);
+                durationInput.addEventListener('input', updateCalculator);
+                packageSelect.addEventListener('change', updateCalculator);
+                currentRevenue.addEventListener('input', updateCalculator);
+                
+                // Initial calculation
+                updateCalculator();
+            }
+            
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const target = document.querySelector(targetId);
+                    if(target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if(navMenu.classList.contains('show')) {
+                            navMenu.classList.remove('show');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
